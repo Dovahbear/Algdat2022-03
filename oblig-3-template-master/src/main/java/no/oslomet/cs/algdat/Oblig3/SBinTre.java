@@ -175,11 +175,11 @@ public class SBinTre<T> {
     }
 
     public void postorden(Oppgave<? super T> oppgave) {
-        Node<T> p = førstePostorden(rot);
+        Node<T> node = førstePostorden(rot);
 
-        while (p != null) {
-            oppgave.utførOppgave(p.verdi);
-            p = nestePostorden(p);
+        while (node != null) {
+            oppgave.utførOppgave(node.verdi);
+            node = nestePostorden(node);
         }
     }
 
@@ -197,7 +197,7 @@ public class SBinTre<T> {
     }
 
     public ArrayList<T> serialize() {
-        ArrayList<T> result = new ArrayList<>();
+        ArrayList<T> resultat = new ArrayList<>();
         ArrayDeque<Node<T>> queue = new ArrayDeque<>();
 
         queue.addLast(rot);
@@ -211,10 +211,10 @@ public class SBinTre<T> {
             if (current.høyre != null) {
                 queue.addLast(current.høyre);
             }
-            result.add(current.verdi);
+            resultat.add(current.verdi);
         }
 
-        return result;
+        return resultat;
     }
 
     static <K> SBinTre<K> deserialize(ArrayList<K> data, Comparator<? super K> c) {

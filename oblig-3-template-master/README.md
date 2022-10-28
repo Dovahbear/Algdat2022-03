@@ -30,6 +30,16 @@ Hva jeg gjorde, var å sjekke aller først om forelderen til til verdien var nul
 Deretter, så sjekket jeg om p hadde et "søsken", altså om dens forelder hadde et annet barn. Hvis den hadde det, så fortsatte sjekket jeg derifra først mot venstre, så mot høyre. til jeg fant en ny ende.
 Hvis den ikke hadde et søsken, så var foreldren den neste i rekken.
 
-For Oppgave 4
+For Oppgave 4 Først så benyttet vi oss postorden ved å bruke førstePostodern() og nestePostorden og utførte oppgave med dem.
+I postordenRecursive så sjekker vi om p == null, deretter så kjører vi postordenRecursive mote venstre siden, så mot høyre, og til slutt utfører oppgaven.
 
-For Oppgave 5
+
+For Oppgave 5, serialize() så traverserte vi over treet og la verdiene i postorden til i et array kalt resultat.
+i deserialize(a lot) så gikk vi over et array, og brukte leggInn() fra oppgave 1 til å legge verdiene inn i et nytt tre, en indeks av gangen..
+
+
+Når det kommer til warnings i teksten, så er de alle fra ting som var der fra før av, fra malen.
+Videre, så gjorde jeg som instruert på Canvas, og slettet noen av linjene fra gradle, men det fikk ikke jeg noe positivt ut, bortsett fra e-post om at build failet.
+
+
+Skal også konkludere med at github ikke ble satt opp før på Torsdag, da jeg hadde problemer med det, og fikk hjelp på øvingstimen.
