@@ -169,6 +169,9 @@ public class SBinTre<T> {
         }
         while(sos.høyre != null) {
             sos = sos.høyre;
+            while(sos.venstre != null) {
+                sos = sos.venstre;
+            }
         }
 
         return sos;

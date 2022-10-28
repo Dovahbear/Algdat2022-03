@@ -38,7 +38,7 @@ For Oppgave 5, serialize() så traverserte vi over treet og la verdiene i postor
 i deserialize(a lot) så gikk vi over et array, og brukte leggInn() fra oppgave 1 til å legge verdiene inn i et nytt tre, en indeks av gangen..
 
 
-Når det kommer til warnings i teksten, så er de alle fra ting som var der fra før av, fra malen.
+Når det kommer til warnings i teksten, så er de alle fra ting som var der fra før av, fra male, jeg har kommentert ut en del av oppgavene som ikke blir brukt, samt test av oppgave 6.
 Videre, så gjorde jeg som instruert på Canvas, og slettet noen av linjene fra gradle, men det fikk ikke jeg noe positivt ut, bortsett fra e-post om at build failet.
 
 
