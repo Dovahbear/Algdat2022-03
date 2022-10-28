@@ -84,26 +84,26 @@ public class SBinTre<T> {
 
         Objects.requireNonNull(verdi, "Ulovlig med nullverdier!");
 
-        Node<T> p = rot, q = null;               // p starter i roten
-        int cmp = 0;                             // hjelpevariabel
+        Node<T> node = rot, par = null;                     // Node starter i rot, par = parent = forelder.
+        int temp = 0;                                       // hjelpevariabel
 
-        while (p != null)       // fortsetter til p er ute av treet
+        while (node != null)                                // fortsetter til noden er ute av treet
         {
-            q = p;                                 // q er forelder til p
-            cmp = comp.compare(verdi,p.verdi);     // bruker komparatoren
-            p = cmp < 0 ? p.venstre : p.høyre;     // flytter p
+            par = node;                                     // par er forelder til node
+            temp = comp.compare(verdi,node.verdi);          // bruker komparatoren
+            node = temp < 0 ? node.venstre : node.høyre;    // flytter noden
         }
 
-        // p er nå null, dvs. ute av treet, q er den siste vi passerte
+        // noden er nå null, dermed ute av treet, par er den siste noden vi passerte,
 
-        p = new Node<>(verdi, q);                    // oppretter en ny node
+        node = new Node<>(verdi, par);                      // oppretter en ny node
 
-        if (q == null) rot = p;                  // p blir rotnode
-        else if (cmp < 0) q.venstre = p;         // venstre barn til q
-        else q.høyre = p;                        // høyre barn til q
+        if (par == null) rot = node;                        // Hvis par er null, så er treet tomt, og noden blir rot.
+        else if (temp < 0) par.venstre = node;              // venstre barn til par
+        else par.høyre = node;                              // høyre barn til par
 
-        antall++;                                // én verdi mer i treet
-        return true;                             // vellykket innlegging
+        antall++;                                           // Oppdaterer antall med 1
+        return true;                                        // vellykket innlegging
     }
 
     public boolean fjern(T verdi) {
@@ -143,8 +143,8 @@ public class SBinTre<T> {
     }
 
     private static <T> Node<T> førstePostorden(Node<T> p) {
-        while (p.venstre != null) {
-            p = p.venstre;
+        while (p.venstre != null) {                                 //Postorden følger idéen om at venstre, høyre, node
+            p = p.venstre;                                          //Så, vi ruller over og går så langt mot venstre som mulig i treet.
         }
         while (p.høyre != null) {
             p = p.høyre;
@@ -160,16 +160,16 @@ public class SBinTre<T> {
             return null;
         }
 
-        Node<T> q = p.forelder.høyre;
+        Node<T> par = p.forelder.høyre;
 
-        if (q == null || p == q)
+        if (par == null || p == par)
             return p.forelder;
 
-        while(q.venstre != null) {
-            q = q.venstre;
+        while(par.venstre != null) {
+            par = par.venstre;
         }
 
-        return q;
+        return par;
     }
 
     public void postorden(Oppgave<? super T> oppgave) {
