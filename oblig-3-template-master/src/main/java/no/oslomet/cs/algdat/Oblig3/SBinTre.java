@@ -99,48 +99,48 @@ public class SBinTre<T> {
         node = new Node<>(verdi, par);                      // oppretter en ny node
 
         if (par == null) rot = node;                        // Hvis par er null, så er treet tomt, og noden blir rot.
-        else if (temp < 0) par.venstre = node;              // venstre barn til par
+        else if (temp < 0) par.venstre = node;             // venstre barn til par
         else par.høyre = node;                              // høyre barn til par
 
         antall++;                                           // Oppdaterer antall med 1
         return true;                                        // vellykket innlegging
     }
 
-    public boolean fjern(T verdi) {
+    /*public boolean fjern(T verdi) {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
     public int fjernAlle(T verdi) {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
-    }
+    }*/
 
     public int antall(T verdi) {
-        if (verdi == null) {
+        if (verdi == null) {                            //Hvis oppgitte verdi er null, så returner den automatisk 0, da ingenting er ingen ganger i treet.
             return 0;
         }
-        if (tom()){
+        if (tom()){                                     //Hvis treet er tomt, så returner den 0, da et tomt tre inneholder ingen verdier (duh)
             return 0;
         }
-        int teller = 0;
+        int counter = 0;                                //Har en counter som skal telle antall ganger vi finner en verdi.
 
-        Node<T> p = rot;
+        Node<T> node = rot;                             //Hjelpenode som skal gå over treet
 
-        while (p != null) {
-            int cmp = comp.compare(verdi, p.verdi);
-            if (cmp < 0) p = p.venstre;
-            else if (cmp > 0) p = p.høyre;
-            else {
-                teller++;
-                p = p.høyre;
+        while (node != null) {                          //Itererer over treet til vi når et leaf, også hopper av.
+            int sml = comp.compare(verdi, node.verdi);  //sml = sammenligning = compare
+            if (sml < 0) node = node.venstre;           //Hvis noden er større enn verdien vi leter etter, så går vi ned venstresiden
+            else if (sml > 0) node = node.høyre;        //Hvis noden er mindre enn verdien vi leter etter, så går vi ned høyresiden
+            else {                                      //Hvis sml == 0, så er verdi == node.verdi, vi har funnet verdien vi leter etter, og
+                counter++;                              //vi oppdaterer counter, da vi har funnet en verdi
+                node = node.høyre;                      //Vi går til høyre, da leggInn() legger inn duplikater til høyre (så neste vil ligge ned den ruten, om den finnes)
             }
         }
-        return teller;
+        return counter;                                 //returnerer counter som et integral.
 
     }
 
-    public void nullstill() {
+    /*public void nullstill() {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
-    }
+    }*/
 
     private static <T> Node<T> førstePostorden(Node<T> p) {
         while (p.venstre != null) {                                 //Postorden følger idéen om at venstre, høyre, node
