@@ -160,16 +160,18 @@ public class SBinTre<T> {
             return null;
         }
 
-        Node<T> par = p.forelder.høyre;
+        Node<T> sos = p.forelder.høyre;                         //sos = søsken = forelders andre barn
 
-        if (par == null || p == par)
+        if (sos == null || p == sos)                            //hvis p == sos, så er det et tegn på at den verdien vi var på var det høyre barnet.
             return p.forelder;
-
-        while(par.venstre != null) {
-            par = par.venstre;
+        while(sos.venstre != null) {                            //Deretter så er det likt som i førstePostorden, leter til vi kommer i bånn.
+            sos = sos.venstre;
+        }
+        while(sos.høyre != null) {
+            sos = sos.høyre;
         }
 
-        return par;
+        return sos;
     }
 
     public void postorden(Oppgave<? super T> oppgave) {

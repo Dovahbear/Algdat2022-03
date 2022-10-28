@@ -19,7 +19,16 @@ Hvis den er mindre går vi ned venstresiden, er den større, så går vi ned hø
 counter oppdateres, og vi går ned til høyre da leggInn() fra oppgave1 setter duplikater til høyre, så om vi finner flere, så er de den veien.
 Til slutt, så returner vi counter for å få antall ganger den ønskete verdien blir gjentatt i treet.
 
-For Oppgave 3 
+For Oppgave 3 så går vi over treet, for å finne postorden.
+Da vi skal bare finne den første, så går vi inn i for å finne det leaf'et som er lengst til venstre.
+Dette gjør vi ved å sjekke at om hjelpenoden vi er i har et venstre"barn", hvis den har så lar vi hjelpenoden vår bli samme som venstrebarnet.
+Hvis den ikke har det, så sjekker vi om den har et høyrebarn, og har den det, går vi ned dit, og sjekker igjen om det er et venstrebarn..
+Når vi kommer til en som har hverken venstre, eller høyre barn, så har vi kommet til den endelige verdien, og vi returnerer den verdien.
+
+For nestePostorden så slet jeg lenge med å få til, da jeg trodde jeg skulle gjøre oppgave 4, så jeg prøvde veldig lenge å finne en metode for å få neste og neste og neste.
+Hva jeg gjorde, var å sjekke aller først om forelderen til til verdien var null, i så fall, så var p == rot, og vi var kommet til slutten av treet.
+Deretter, så sjekket jeg om p hadde et "søsken", altså om dens forelder hadde et annet barn. Hvis den hadde det, så fortsatte sjekket jeg derifra først mot venstre, så mot høyre. til jeg fant en ny ende.
+Hvis den ikke hadde et søsken, så var foreldren den neste i rekken.
 
 For Oppgave 4
 
